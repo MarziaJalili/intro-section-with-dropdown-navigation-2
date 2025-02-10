@@ -443,3 +443,18 @@ body.dark {
 
 
 /* Yeah, I know it's not really clean*/
+
+/* but let's add one other animation */
+nav {
+  animation: rectangle 1s ease-in-out 1 forwards;
+}
+
+@keyframes rectangle {
+  from {
+    clip-path: rectangle(0% at 0 0);
+  }
+
+  to {
+    clip-path: rectangle(200% at 0% 0%);
+  }
+}
