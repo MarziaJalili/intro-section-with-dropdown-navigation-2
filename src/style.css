@@ -27,18 +27,17 @@ body {
   background-color: var(--almost-white);
 }
 
-body::before {
+.all-content::before {
   content: "";
   position: absolute;
   height: 100%;
   width: 100%;
   background-color: var(--gray-50);
   display: none;
-
 }
 
 
-body.faded::before {
+body.faded .all-content::before {
   display: block;
 }
 
@@ -189,23 +188,29 @@ section.info {
 .mood {
   position: absolute;
   top: -15%;
-  left: 100%;
+  left: 105%;
+}
+
+main p {
+  max-width: 600px;
 }
 
 /* tablate*/
 @media (min-width: 820px) {
+  body.faded .all-content::before {
+    display: none;
+  }
+
   nav.desktop-nav {
     display: flex;
   }
 
   .mood {
     top: 150%;
-    left: 0;
+    left: 15%;
   }
 
-  main p {
-    max-width: 500px;
-  }
+
 
   /* navbar */
   nav {
@@ -393,7 +398,7 @@ body.dark {
   }
 }
 
-/* clip animations */
+/* clip animations for the page */
 @keyframes showContent {
   from {
     clip-path: circle(0% at 65px 80px);
@@ -442,19 +447,76 @@ body.dark {
 }
 
 
-/* Yeah, I know it's not really clean*/
-
-/* but let's add one other animation */
-nav {
-  animation: rectangle 1s ease-in-out 1 forwards;
+/* 
+Yeah, I know it's not really clean,
+but let's add one other animation for the toggle buttons
+*/
+button.mood svg {
+  animation: rotation 1s ease 1 forwards;
 }
 
-@keyframes rectangle {
+@keyframes rotation {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+button.mood:hover svg {
+  animation: rotation-hover 1s ease 1 forwards;
+}
+
+@keyframes rotation-hover {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 
+for toggle the navbar...
+*/
+
+.mobile-nav {
+  animation: show-navbar 1s ease 1 forwards;
+}
+
+@keyframes show-navbar {
   from {
-    clip-path: rectangle(0% at 0 0);
+    transform: translateX(100%)
   }
 
   to {
-    clip-path: rectangle(200% at 0% 0%);
+    transform: translateX(0%);
+  }
+}
+
+.mobile-nav.fade-navbar {
+  animation: fade-navbar 1s ease 1 forwards;
+}
+
+@keyframes fade-navbar {
+  from {
+    transform: translateX(0%)
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* 
+for the dropdowns...
+*/
+.features,
+.company {
+  animation: show-dropdown .5s ease 1 forwards;
+}
+
+@keyframes show-dropdown {
+  from {
+    transform: translateY(-30%);
+  }
+
+  to {
+    transform: translateY(0%);
   }
 }
