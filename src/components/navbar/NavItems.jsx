@@ -24,7 +24,7 @@ function NavItems() {
 
     return (
       <li key={item.id}>
-        <a href="#" className="flex" onClick={() => { handleClick(item.id) }}>
+        <a href="#" className="flex nav-element" onClick={() => { handleClick(item.id) }}>
           {item.name}
 
           {item.button ?

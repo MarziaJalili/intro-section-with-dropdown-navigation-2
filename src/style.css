@@ -461,7 +461,9 @@ button.mood svg {
   }
 }
 
-button.mood:hover svg {
+button.mood:hover svg,
+button.mood:active svg,
+.nav-element:active button img {
   animation: rotation-hover 1s ease 1 forwards;
 }
 
@@ -519,4 +521,12 @@ for the dropdowns...
   to {
     transform: translateY(0%);
   }
+}
+
+/* 
+for the menu close and open buttons
+*/
+button.close-menu:active svg,
+button.open-menu:active svg {
+  scale: .9;
 }
